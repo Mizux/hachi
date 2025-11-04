@@ -1,0 +1,49 @@
+@startdot
+digraph TypeChart {
+  //rankdir=BT;
+  rankdir=TD;
+  node [shape=cylinder, style="rounded,filled", color=black, fillcolor=royalblue];
+  Mil [label="Mil", fillcolor="#E00000"];
+  Bio [label="Bio", fillcolor="#00E000"];
+  Tel [label="Tel", fillcolor="#0060E0"];
+  Nano [label="Nano", fillcolor="#C0E000"];
+  Chem [label="Chem", fillcolor="#8000E0"];
+  Blk [label="Blk", fillcolor="#101010"];
+  Wht [label="Wht", fillcolor="#DDDDDD"];
+  AI [label="AI", fillcolor="#808080"];
+  Street [label="Street", fillcolor="#806030"];
+
+  edge [color=red];
+  Mil -> Bio [label=">", color="#E00000"];
+  Mil -> AI [label=">", color="#E00000"];
+  Mil -> Street [label=">", color="#E00000"];
+  Bio -> Tel [label=">", color="#00E000"];
+  Bio -> Blk [label=">", color="#00E000"];
+  Bio -> Wht [label=">", color="#00E000"];
+  Bio -> Street [label=">", color="#00E000"];
+  Tel -> Mil [label=">", color="#0060E0"];
+  Tel -> Nano [label=">", color="#0060E0"];
+  Tel -> AI [label=">", color="#0060E0"];
+  Tel -> Street [label=">", color="#0060E0"];
+  Nano -> Bio [label=">", color="#C0E000"];
+  Nano -> Nano [label=">", color="#C0E000"];
+  Nano -> Street [label=">", color="#C0E000"];
+  Chem -> Mil [label=">", color="#8000E0"];
+  Chem -> Bio [label=">", color="#8000E0"];
+  Blk -> Tel [label=">", color="#101010"];
+  Blk -> Nano [label=">", color="#101010"];
+  Blk -> Wht [label=">", color="#101010"];
+  Blk -> Mil [label=">", color="#101010"];
+  Wht -> Tel [label=">", color="#DDDDDD"];
+  Wht -> Nano [label=">", color="#DDDDDD"];
+  Wht -> Blk [label=">", color="#DDDDDD"];
+  Wht -> Mil [label=">", color="#DDDDDD"];
+  AI -> Nano [label=">", color="#808080"];
+  AI -> Blk [label=">", color="#808080"];
+  AI -> Wht [label=">", color="#808080"];
+  Street -> Chem [label=">", color="#806030"];
+  Street -> Blk [label=">", color="#806030"];
+  Street -> Wht [label=">", color="#806030"];
+  Street -> AI [label=">", color="#806030"];
+}
+@enddot
