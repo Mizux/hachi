@@ -31,7 +31,7 @@ strengths = {
     "Mil": ["Bio", "AI", "Street"],
     "Bio": ["Tel", "Blk", "Wht", "Street"],
     "Tel": ["Mil", "Nano", "AI", "Street"],
-    "Nano": ["Bio", "Nano", "Street"],
+    "Nano": ["Mil", "Bio", "Nano", "Street"],
     "Chem": ["Mil", "Bio"],
     "Blk": ["Tel", "Nano", "Wht", "Mil"],
     "Wht": ["Tel", "Nano", "Blk", "Mil"],
