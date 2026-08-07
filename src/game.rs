@@ -24,4 +24,21 @@ impl GameState {
         self.player.x = new_x as u16;
         self.player.y = new_y as u16;
     }
+
+    pub fn render_map(&self) -> String {
+        let mut map_str = String::new();
+        for y in 0..self.map_height {
+            for x in 0..self.map_width {
+                if x == self.player.x && y == self.player.y {
+                    map_str.push('@');
+                } else {
+                    map_str.push('.');
+                }
+            }
+            if y < self.map_height - 1 {
+                map_str.push('\n');
+            }
+        }
+        map_str
+    }
 }
