@@ -10,8 +10,17 @@ A monster-catching jrpg like game but in a cyberpunk world.
 ## Setup
 
 ```sh
-cargo install trunk
+rustup default stable
 rustup target add wasm32-unknown-unknown
+```
+
+To bundle you need `trunk`...
+
+```sh
+pacman -S trunk
+# or
+cargo install trunk
+export PATH=${PATH}:${HOME}/.cargo/bin/
 ```
 
 ## Build & Test
