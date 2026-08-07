@@ -13,8 +13,8 @@ impl GameState {
     pub fn new() -> Self {
         Self {
             player: Player { x: 5, y: 5 },
-            map_width: 20,
-            map_height: 10,
+            map_width: 40,
+            map_height: 20,
         }
     }
 
@@ -30,9 +30,9 @@ impl GameState {
         for y in 0..self.map_height {
             for x in 0..self.map_width {
                 if x == self.player.x && y == self.player.y {
-                    map_str.push('@');
+                    map_str.push_str("@ ");
                 } else {
-                    map_str.push('.');
+                    map_str.push_str(". ");
                 }
             }
             if y < self.map_height - 1 {

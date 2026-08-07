@@ -23,22 +23,30 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let res = (|| -> Result<(), Box<dyn std::error::Error>> {
         loop {
             terminal.draw(|f| {
-                let chunks = Layout::default()
-                    .direction(Direction::Vertical)
+                let main_chunks = Layout::default()
+                    .direction(Direction::Horizontal)
                     .constraints([
-                        Constraint::Length(game.map_height + 2),
-                        Constraint::Length(3),
+                        Constraint::Length(game.map_width * 2 + 2), // Doubled width + borders
+                        Constraint::Min(0),                         // Remaining right space
                     ])
                     .split(f.area());
 
+                let map_chunks = Layout::default()
+                    .direction(Direction::Vertical)
+                    .constraints([
+                        Constraint::Length(game.map_height + 2),
+                        Constraint::Length(3), // Bottom HUD / status bar
+                    ])
+                    .split(main_chunks[0]);
+
                 let map_widget = Paragraph::new(game.render_map())
                     .block(Block::default().borders(Borders::ALL).title("Hachi Map"));
-                f.render_widget(map_widget, chunks[0]);
+                f.render_widget(map_widget, map_chunks[0]);
 
                 let info = format!("Player at ({}, {}) - Use WASD/Arrows to move, Q to quit", game.player.x, game.player.y);
                 let info_widget = Paragraph::new(info)
                     .block(Block::default().borders(Borders::ALL).title("Info"));
-                f.render_widget(info_widget, chunks[1]);
+                f.render_widget(info_widget, map_chunks[1]);
             })?;
 
             if let Event::Key(key) = event::read()? {
