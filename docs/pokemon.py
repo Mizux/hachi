@@ -1,48 +1,27 @@
 #!/usr/bin/env python3
 import tools as t
 
-types = [
-    "Normal",
-    "Fire",
-    "Grass",
-    "Water",
-    "Electric",
-    "Ice",
-    "Fighting",
-    "Poison",
-    "Ground",
-    "Flying",
-    "Psychic",
-    "Bug",
-    "Rock",
-    "Ghost",
-    "Dragon",
-    "Dark",
-    "Steel",
-    "Fairy",
-]
-
-colors = [
-   '#C06040', # Normal
-   '#E00000', # Fire
-   '#00E000', # Grass
-   '#0000E0', # Water
-   '#F0F000', # Electric
-   '#40F0F0', # Ice
-   '#806030', # Fighting
-   '#8000E0', # Poison
-   '#806030', # Ground
-   '#C08060', # Flying
-   '#FF8000', # Psychic
-   '#008040', # Bug
-   '#404040', # Rock
-   '#D0D0D0', # Ghost
-   '#C0E000', # Dragon
-   '#202020', # Dark
-   '#808080', # Steel
-   '#E050C0', # Fairy
-]
-assert len(types) == len(colors)
+colors = {
+    "Normal": "#C06040",
+    "Fire": "#E00000",
+    "Grass": "#00E000",
+    "Water": "#0000E0",
+    "Electric": "#F0F000",
+    "Ice": "#40F0F0",
+    "Fighting": "#806030",
+    "Poison": "#8000E0",
+    "Ground": "#806030",
+    "Flying": "#C08060",
+    "Psychic": "#FF8000",
+    "Bug": "#008040",
+    "Rock": "#404040",
+    "Ghost": "#D0D0D0",
+    "Dragon": "#C0E000",
+    "Dark": "#202020",
+    "Steel": "#808080",
+    "Fairy": "#E050C0",
+}
+types = list(colors.keys())
 
 # Based on the official Pokemon type chart
 strengths = {

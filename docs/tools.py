@@ -70,8 +70,13 @@ def get_mermaid(types, strengths, colors=None):
         for t2 in strengths[t1]:
             ret += f"    {t1} --> {t2}\n"
     if colors:
-        for t, c in zip(types, colors):
-            ret += f"    style {t} fill:{c}\n"
+        if isinstance(colors, dict):
+            for t in types:
+                if t in colors:
+                    ret += f"    style {t} fill:{colors[t]}\n"
+        else:
+            for t, c in zip(types, colors):
+                ret += f"    style {t} fill:{c}\n"
     ret += "```\n"
     return ret
 

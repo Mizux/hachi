@@ -1,30 +1,18 @@
 #!/usr/bin/env python3
 import tools as t
 
-types = [
-    "Mil",
-    "Bio",
-    "Tel",
-    "Nano",
-    "Chem",
-    "Blk",
-    "Wht",
-    "AI",
-    "Street",
-]
-
-colors = [
-    "#E00000",  # Mil
-    "#00E000",  # Bio
-    "#0060E0",  # Tel
-    "#C0E000",  # Nano
-    "#8000E0",  # Chem
-    "#101010",  # Blk
-    "#DDDDDD",  # Wht
-    "#808080",  # AI
-    "#806030",  # Street
-]
-assert len(types) == len(colors)
+colors = {
+    "Mil": "#E00000",
+    "Bio": "#00E000",
+    "Tel": "#0060E0",
+    "Nano": "#C0E000",
+    "Chem": "#8000E0",
+    "Blk": "#101010",
+    "Wht": "#DDDDDD",
+    "AI": "#808080",
+    "Street": "#806030",
+}
+types = list(colors.keys())
 
 strengths = {
     "Mil": ["Bio", "AI", "Street"],
