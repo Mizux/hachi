@@ -59,25 +59,21 @@ def find_all_type_cycles(types, strengths):
     return solution_collector.solution_ids, solution_collector.solutions
 
 
-def get_dot(types, strengths, colors):
+def get_mermaid(types, strengths, colors=None):
     assert len(types) == len(strengths)
-    assert len(types) == len(colors)
-    a = r"""@startdot
-digraph TypeChart {
-  //rankdir=BT;
-  rankdir=TD;
-"""
-    a += """  node [shape=cylinder, style="rounded,filled", color=black, fillcolor=royalblue];\n"""
-    for t, c in zip(types, colors):
-        a += f'  {t} [label="{t}", fillcolor="{c}"];\n'
-    a += "\n  edge [color=red];\n"
-    for t1, c in zip(types, colors):
+    if colors:
+        assert len(types) == len(colors)
+    ret = "```mermaid\nflowchart TD\n"
+    for t in types:
+        ret += f"    {t}[{t}]\n"
+    for t1 in types:
         for t2 in strengths[t1]:
-            a += f'  {t1} -> {t2} [label=">", color="{c}"];\n'
-    a += r"""}
-@enddot
-"""
-    return a
+            ret += f"    {t1} --> {t2}\n"
+    if colors:
+        for t, c in zip(types, colors):
+            ret += f"    style {t} fill:{c}\n"
+    ret += "```\n"
+    return ret
 
 
 def get_table(types, strengths):

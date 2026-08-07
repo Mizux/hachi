@@ -54,10 +54,7 @@ if __name__ == "__main__":
             stats[id] += 1
     print(stats)
 
-    # print(get_dot(types, strengths, colors))
-    with open("hachi.dot", "w") as f:
-        f.write(t.get_dot(types, strengths, colors))
-
-    # print(get_table(types, strengths))
     with open("hachi.md", "w") as f:
         f.write(t.get_table(types, strengths))
+        f.write("\n")
+        f.write(t.get_mermaid(types, strengths, colors))

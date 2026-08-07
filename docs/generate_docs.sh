@@ -10,15 +10,6 @@ elif [ -f "$CDIR/venv/bin/activate" ]; then
   source "$CDIR/venv/bin/activate"
 fi
 
-# Check plantuml is in PATH
-command -v plantuml
-
-# Run python scripts to regenerate dot and md files
+# Run python scripts to regenerate md files (including mermaid graphs)
 python3 hachi.py
 python3 pokemon.py
-
-# Regenerate all svg files from dot files
-rm -f *.svg
-for i in *.dot; do
-  plantuml --format svg "$i"
-done
