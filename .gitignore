@@ -10,3 +10,7 @@ logs
 # IDE
 *.swp
 *.pyc
+
+# Rust
+/target
+/Cargo.lock

@@ -1,0 +1,16 @@
+[package]
+name = "hachi"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+# Shared game state dependencies
+rand = "0.10.2"
+
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+ratatui = "0.30.2"
+crossterm = "0.29"
+
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+ratzilla = "0.3.1"
+getrandom = { version = "0.4.3", features = ["wasm_js"] }
