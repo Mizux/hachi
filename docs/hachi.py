@@ -55,6 +55,9 @@ if __name__ == "__main__":
     print(stats)
 
     with open("hachi.md", "w") as f:
+        f.write("## Types Chart\n\n")
         f.write(t.get_table(types, strengths))
         f.write("\n")
         f.write(t.get_mermaid(types, strengths, colors))
+        f.write("\n")
+        f.write(t.get_type_cycles_markdown(types, strengths))

@@ -1,3 +1,5 @@
+## Types Chart
+
 | A \ D  | Normal |  Fire  | Grass  | Water  | Electric |  Ice   | Fighting | Poison | Ground | Flying | Psychic |  Bug   |  Rock  | Ghost  | Dragon |  Dark  | Steel  | Fairy  |
 | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ |
 | Normal |   .    |   .    |   .    |   .    |   .    |   .    |   .    |   .    |   .    |   .    |   .    |   .    |   .    |   .    |   .    |   .    |   .    |   .    |
@@ -109,3 +111,24 @@ flowchart TD
     style Steel fill:#808080
     style Fairy fill:#E050C0
 ```
+
+## Type Cycles
+
+Found 16 3-type cycles:
+
+- Fire -> Grass -> Water -> Fire
+- Fire -> Grass -> Ground -> Fire
+- Fire -> Grass -> Rock -> Fire
+- Fire -> Ice -> Ground -> Fire
+- Fire -> Steel -> Rock -> Fire
+- Grass -> Ground -> Poison -> Grass
+- Grass -> Rock -> Ice -> Grass
+- Grass -> Rock -> Flying -> Grass
+- Grass -> Rock -> Bug -> Grass
+- Water -> Ground -> Electric -> Water
+- Ice -> Ground -> Rock -> Ice
+- Ice -> Ground -> Steel -> Ice
+- Ice -> Flying -> Fighting -> Ice
+- Fighting -> Rock -> Flying -> Fighting
+- Fighting -> Dark -> Psychic -> Fighting
+- Fighting -> Steel -> Fairy -> Fighting

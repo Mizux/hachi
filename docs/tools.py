@@ -101,3 +101,11 @@ def get_weak_strength(types, strengths):
             + f" > **{i}** > {strengths[i]}\n"
         )
     return ret
+
+
+def get_type_cycles_markdown(types, strengths):
+    cycle_ids, cycles = find_all_type_cycles(types, strengths)
+    ret = f"## Type Cycles\n\nFound {len(cycles)} 3-type cycles:\n\n"
+    for _, cycle in sorted(zip(cycle_ids, cycles)):
+        ret += f"- {' -> '.join(cycle)} -> {cycle[0]}\n"
+    return ret

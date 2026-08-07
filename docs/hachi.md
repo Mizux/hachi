@@ -1,3 +1,5 @@
+## Types Chart
+
 | A \ D  |  Mil   |  Bio   |  Tel   |  Nano  |  Chem  |  Blk   |  Wht   |   AI   | Street |
 | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ |
 |  Mil   |   .    |   X    |   .    |   .    |   .    |   .    |   .    |   X    |   X    |
@@ -63,3 +65,28 @@ flowchart TD
     style AI fill:#808080
     style Street fill:#806030
 ```
+
+## Type Cycles
+
+Found 20 3-type cycles:
+
+- Mil -> Bio -> Tel -> Mil
+- Mil -> Bio -> Blk -> Mil
+- Mil -> Bio -> Wht -> Mil
+- Mil -> AI -> Nano -> Mil
+- Mil -> AI -> Blk -> Mil
+- Mil -> AI -> Wht -> Mil
+- Mil -> Street -> Chem -> Mil
+- Mil -> Street -> Blk -> Mil
+- Mil -> Street -> Wht -> Mil
+- Bio -> Tel -> Nano -> Bio
+- Bio -> Blk -> Nano -> Bio
+- Bio -> Wht -> Nano -> Bio
+- Bio -> Street -> Chem -> Bio
+- Tel -> AI -> Blk -> Tel
+- Tel -> AI -> Wht -> Tel
+- Tel -> Street -> Blk -> Tel
+- Tel -> Street -> Wht -> Tel
+- Nano -> Street -> Blk -> Nano
+- Nano -> Street -> Wht -> Nano
+- Nano -> Street -> AI -> Nano
