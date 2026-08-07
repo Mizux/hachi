@@ -14,3 +14,4 @@ logs
 # Rust
 /target
 /Cargo.lock
+/dist

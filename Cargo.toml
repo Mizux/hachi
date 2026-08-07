@@ -14,3 +14,4 @@ crossterm = "0.29"
 [target.'cfg(target_arch = "wasm32")'.dependencies]
 ratzilla = "0.3.1"
 getrandom = { version = "0.4.3", features = ["wasm_js"] }
+critical-section = { version = "1.2", features = ["std"] }
