@@ -55,9 +55,9 @@ if __name__ == "__main__":
     print(stats)
 
     # print(get_dot(types, strengths, colors))
-    with open("types.dot", "w") as f:
+    with open("hachi.dot", "w") as f:
         f.write(t.get_dot(types, strengths, colors))
 
     # print(get_table(types, strengths))
-    with open("types.md", "w") as f:
+    with open("hachi.md", "w") as f:
         f.write(t.get_table(types, strengths))
