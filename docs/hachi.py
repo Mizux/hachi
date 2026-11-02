@@ -2,32 +2,37 @@
 import tools as t
 
 colors = {
-    "Mil": "#E00000",
-    "Bio": "#00E000",
-    "Tel": "#0060E0",
-    "Nano": "#C0E000",
-    "Chem": "#8000E0",
-    "Blk": "#101010",
-    "Wht": "#DDDDDD",
-    "AI": "#808080",
-    "Street": "#806030",
-    "Corp": "#E050C0",
-    "Mech": "#404040",
+    # name: (FG, BG)
+    "Mech": ("#111","#E22"),
+    "Bio": ("#741","#2A4"),
+    "Tel": ("#EE0","#08E"),
+    
+    "Nano": ("#111","#CE0"),
+    "Chem": ("#111","#80E"),
+    
+    "Hack": ("#0D0","#111"),
+    "AI": ("#08E","#111"),
+    
+    "Corp": ("#D00","#EEE"),
+    "Street": ("#111","#863"),
+    "Gov": ("#DDD","#039"),
 }
 types = list(colors.keys())
 
 strengths = {
-    "Mil": ["Bio", "AI", "Street", "Mech"],
-    "Bio": ["Tel", "Blk", "Wht", "Street"],
-    "Tel": ["Mil", "Nano", "AI", "Street", "Corp"],
-    "Nano": ["Mil", "Bio", "Nano", "Chem", "Street", "Mech"],
-    "Chem": ["Mil", "Bio", "Corp", "Mech"],
-    "Blk": ["Tel", "Nano", "Wht", "Mil", "Corp"],
-    "Wht": ["Tel", "Nano", "Blk", "Mil"],
-    "AI": ["Nano", "Blk", "Wht", "Corp", "Mech"],
-    "Street": ["Chem", "Blk", "Wht", "AI"],
-    "Corp": ["Mil", "Wht", "Street", "Mech"],
-    "Mech": ["Bio", "Tel"],
+    "Mech": ["Bio", "Chem"],
+    "Bio": ["Tel", "Hack"],
+    "Tel": ["Mech", "Nano", "AI"],
+    
+    "Nano": ["Nano", "Mech", "Bio", "Hack"],
+    "Chem": ["Nano", "Bio", "AI", "Hack"],
+    
+    "Hack": ["Tel", "Mech", "Corp", "Gov"],
+    "AI": ["Hack", "Mech", "Nano", "Gov"],
+    
+    "Corp": ["Corp", "Street", "AI"],
+    "Street": ["Gov", "Chem", "Hack"],
+    "Gov": ["Corp", "Nano"],
 }
 assert len(types) == len(strengths)
 
