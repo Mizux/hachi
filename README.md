@@ -5,6 +5,7 @@ A monster-catching jrpg like game but in a cyberpunk world.
 ## Documentation
 
 - [Hachi Type Chart](docs/hachi.md)
+- [Hachi Type Extension Proposals](docs/proposal.md)
 - [Pokemon Type Chart](docs/pkm.md)
 
 ## Setup
