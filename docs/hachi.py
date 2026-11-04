@@ -11,25 +11,29 @@ colors = {
     "Wht": "#DDDDDD",
     "AI": "#808080",
     "Street": "#806030",
+    "Corp": "#E050C0",
+    "Mech": "#404040",
 }
 types = list(colors.keys())
 
 strengths = {
-    "Mil": ["Bio", "AI", "Street"],
+    "Mil": ["Bio", "AI", "Street", "Mech"],
     "Bio": ["Tel", "Blk", "Wht", "Street"],
-    "Tel": ["Mil", "Nano", "AI", "Street"],
-    "Nano": ["Mil", "Bio", "Nano", "Street"],
-    "Chem": ["Mil", "Bio"],
-    "Blk": ["Tel", "Nano", "Wht", "Mil"],
+    "Tel": ["Mil", "Nano", "AI", "Street", "Corp"],
+    "Nano": ["Mil", "Bio", "Nano", "Chem", "Street", "Mech"],
+    "Chem": ["Mil", "Bio", "Corp", "Mech"],
+    "Blk": ["Tel", "Nano", "Wht", "Mil", "Corp"],
     "Wht": ["Tel", "Nano", "Blk", "Mil"],
-    "AI": ["Nano", "Blk", "Wht"],
+    "AI": ["Nano", "Blk", "Wht", "Corp", "Mech"],
     "Street": ["Chem", "Blk", "Wht", "AI"],
+    "Corp": ["Mil", "Wht", "Street", "Mech"],
+    "Mech": ["Bio", "Tel"],
 }
 assert len(types) == len(strengths)
 
 
 if __name__ == "__main__":
-    print(t.get_weak_strength(types, strengths))
+    print(t.get_type_weak_strength_markdown(types, strengths))
 
     cycle_ids, cycles = t.find_all_type_cycles(types, strengths)
     for cycle in sorted(zip(cycle_ids, cycles)):
@@ -44,8 +48,10 @@ if __name__ == "__main__":
 
     with open("hachi.md", "w") as f:
         f.write("## Types Chart\n\n")
-        f.write(t.get_table(types, strengths))
+        f.write(t.get_type_table_markdown(types, strengths))
         f.write("\n")
-        f.write(t.get_mermaid(types, strengths, colors))
+        f.write(t.get_type_chart_markdown(types, strengths, colors))
+        f.write("\n")
+        f.write(t.get_stats_markdown(types, strengths))
         f.write("\n")
         f.write(t.get_type_cycles_markdown(types, strengths))

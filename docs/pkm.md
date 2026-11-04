@@ -92,25 +92,48 @@ flowchart TD
     Fairy --> Fighting
     Fairy --> Dragon
     Fairy --> Dark
-    style Normal fill:#C06040
-    style Fire fill:#E00000
-    style Grass fill:#00E000
-    style Water fill:#0000E0
-    style Electric fill:#F0F000
-    style Ice fill:#40F0F0
-    style Fighting fill:#806030
-    style Poison fill:#8000E0
-    style Ground fill:#806030
-    style Flying fill:#C08060
-    style Psychic fill:#FF8000
-    style Bug fill:#008040
-    style Rock fill:#404040
-    style Ghost fill:#D0D0D0
-    style Dragon fill:#C0E000
-    style Dark fill:#202020
-    style Steel fill:#808080
-    style Fairy fill:#E050C0
+    style Normal color:#111,fill:#C06040
+    style Fire color:#111,fill:#E02020
+    style Grass color:#111,fill:#20A040
+    style Water color:#DDD,fill:#0080E0
+    style Electric color:#111,fill:#F0F000
+    style Ice color:#111,fill:#40F0F0
+    style Fighting color:#111,fill:#806030
+    style Poison color:#080,fill:#8000E0
+    style Ground color:#111,fill:#806030
+    style Flying color:#111,fill:#C08060
+    style Psychic color:#111,fill:#F050A0
+    style Bug color:#111,fill:#008040
+    style Rock color:#111,fill:#404040
+    style Ghost color:#111,fill:#D0D0D0
+    style Dragon color:#111,fill:#C0E000
+    style Dark color:#FF0,fill:#202020
+    style Steel color:#111,fill:#808080
+    style Fairy color:#111,fill:#E050C0
 ```
+
+## Type Stats
+
+| Type | Weak To (Incoming) | Strong Against (Outgoing) | 3-Type Cycles |
+| :--- | :--- | :--- | :---: |
+| **`Normal`** | `Fighting` (1) | *(None)* (0) | **0** |
+| **`Fire`** | `Water`, `Ground`, `Rock` (3) | `Grass`, `Ice`, `Bug`, `Steel` (4) | **5** |
+| **`Grass`** | `Fire`, `Ice`, `Poison`, `Flying`, `Bug` (5) | `Water`, `Ground`, `Rock` (3) | **7** |
+| **`Water`** | `Grass`, `Electric` (2) | `Fire`, `Ground`, `Rock` (3) | **2** |
+| **`Electric`** | `Ground` (1) | `Water`, `Flying` (2) | **1** |
+| **`Ice`** | `Fire`, `Fighting`, `Rock`, `Steel` (4) | `Grass`, `Ground`, `Flying`, `Dragon` (4) | **5** |
+| **`Fighting`** | `Flying`, `Psychic`, `Fairy` (3) | `Normal`, `Ice`, `Rock`, `Dark`, `Steel` (5) | **4** |
+| **`Poison`** | `Ground`, `Psychic` (2) | `Grass`, `Fairy` (2) | **1** |
+| **`Ground`** | `Grass`, `Water`, `Ice` (3) | `Fire`, `Electric`, `Poison`, `Rock`, `Steel` (5) | **6** |
+| **`Flying`** | `Electric`, `Ice`, `Rock` (3) | `Grass`, `Fighting`, `Bug` (3) | **3** |
+| **`Psychic`** | `Bug`, `Ghost`, `Dark` (3) | `Fighting`, `Poison` (2) | **1** |
+| **`Bug`** | `Fire`, `Flying`, `Rock` (3) | `Grass`, `Psychic`, `Dark` (3) | **1** |
+| **`Rock`** | `Grass`, `Water`, `Fighting`, `Ground`, `Steel` (5) | `Fire`, `Ice`, `Flying`, `Bug` (4) | **7** |
+| **`Ghost`** | `Ghost`, `Dark` (2) | `Psychic`, `Ghost` (2) | **0** |
+| **`Dragon`** | `Ice`, `Dragon`, `Fairy` (3) | `Dragon` (1) | **0** |
+| **`Dark`** | `Fighting`, `Bug`, `Fairy` (3) | `Psychic`, `Ghost` (2) | **1** |
+| **`Steel`** | `Fire`, `Fighting`, `Ground` (3) | `Ice`, `Rock`, `Fairy` (3) | **3** |
+| **`Fairy`** | `Poison`, `Steel` (2) | `Fighting`, `Dragon`, `Dark` (3) | **1** |
 
 ## Type Cycles
 

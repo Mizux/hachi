@@ -59,7 +59,11 @@ def find_all_type_cycles(types, strengths):
     return solution_collector.solution_ids, solution_collector.solutions
 
 
-def get_mermaid(types, strengths, colors=None):
+def get_type_chart_markdown(types, strengths, colors=None):
+    """
+    Generates a Mermaid flowchart in Markdown representing the type strengths graph,
+    with optional node fill colors.
+    """
     assert len(types) == len(strengths)
     if colors:
         assert len(types) == len(colors)
@@ -73,7 +77,7 @@ def get_mermaid(types, strengths, colors=None):
         if isinstance(colors, dict):
             for t in types:
                 if t in colors:
-                    ret += f"    style {t} fill:{colors[t]}\n"
+                    ret += f"    style {t} color:{colors[t][0]},fill:{colors[t][1]}\n"
         else:
             for t, c in zip(types, colors):
                 ret += f"    style {t} fill:{c}\n"
@@ -81,7 +85,11 @@ def get_mermaid(types, strengths, colors=None):
     return ret
 
 
-def get_table(types, strengths):
+def get_type_table_markdown(types, strengths):
+    """
+    Generates a 2D Markdown table matrix showing super-effective matchups ('X')
+    between attacker (row) and defender (column) types.
+    """
     assert len(types) == len(strengths)
     ret = "| A \\ D  "
     for t in types:
@@ -97,7 +105,11 @@ def get_table(types, strengths):
     return ret
 
 
-def get_weak_strength(types, strengths):
+def get_type_weak_strength_markdown(types, strengths):
+    """
+    Generates a summary string listing for each type the list of types it is
+    weak to (incoming) and strong against (outgoing).
+    """
     assert len(types) == len(strengths)
     ret = ""
     for i in types:
@@ -108,7 +120,43 @@ def get_weak_strength(types, strengths):
     return ret
 
 
+def get_stats_markdown(types, strengths):
+    """
+    Generates a Markdown table summarizing each type's incoming weaknesses,
+    outgoing strengths, and number of 3-type cycles it participates in.
+    """
+    assert len(types) == len(strengths)
+    _, cycles = find_all_type_cycles(types, strengths)
+    stats = dict.fromkeys(types, 0)
+    for cycle in cycles:
+        for t in cycle:
+            stats[t] += 1
+
+    ret = "## Type Stats\n\n"
+    ret += "| Type | Weak To (Incoming) | Strong Against (Outgoing) | 3-Type Cycles |\n"
+    ret += "| :--- | :--- | :--- | :---: |\n"
+    for t in types:
+        weak_to = [j for j in types if t in strengths[j]]
+        strong_vs = strengths[t]
+        weak_str = (
+            f"{', '.join(f'`{x}`' for x in weak_to)} ({len(weak_to)})"
+            if weak_to
+            else "*(None)* (0)"
+        )
+        strong_str = (
+            f"{', '.join(f'`{x}`' for x in strong_vs)} ({len(strong_vs)})"
+            if strong_vs
+            else "*(None)* (0)"
+        )
+        ret += f"| **`{t}`** | {weak_str} | {strong_str} | **{stats[t]}** |\n"
+    return ret
+
+
 def get_type_cycles_markdown(types, strengths):
+    """
+    Generates a Markdown section listing all 3-type cycles found in the
+    type strengths graph.
+    """
     cycle_ids, cycles = find_all_type_cycles(types, strengths)
     ret = f"## Type Cycles\n\nFound {len(cycles)} 3-type cycles:\n\n"
     for _, cycle in sorted(zip(cycle_ids, cycles)):
